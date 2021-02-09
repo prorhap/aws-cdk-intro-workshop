@@ -3,15 +3,9 @@ title = "API Gateway"
 weight = 300
 +++
 
-Next step is to add an API Gateway in front of our function. API Gateway will
-expose a public HTTP endpoint that anyone on the internet can hit with an HTTP
-client such as [curl](https://curl.haxx.se/) or a web browser.
+다음 단계는 우리의 함수 앞에 API Gateway를 추가하는 것 입니다. API Gateway는 [curl](https://curl.haxx.se/) 또는 웹 브라우저와 같은 HTTP 클라이언트를 사용해서 인터넷에 있는 사용자에게 HTTP 앤드포인트를 노출합니다.
 
-We will use [Lambda proxy
-integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html)
-mounted to the root of the API. This means that any request to any URL path will
-be proxied directly to our Lambda function, and the response from the function
-will be returned back to the user.
+우리는 API의 루트에 마운트 된 [Lambda 프록시 통합](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html) 을 사용합니다. 즉, URL 경로에 대한 모든 요청은 Lambda 함수로 직접 프록시되고 함수의 응답이 사용자에게 다시 반환됩니다.
 
 ## Install the API Gateway construct library
 
@@ -21,16 +15,13 @@ npm install @aws-cdk/aws-apigateway
 
 {{% notice info %}}
 
-**Windows users**: on Windows, you will have to stop the `npm run watch` command
-that is running in the background, then run `npm install`, then start
-`npm run watch` again. Otherwise you will get an error about files being
-in use.
+**Windows 사용자**: Windows에서는 백그라운드에서 실행중인 `npm run watch` 명령을 중지하고, `npm install`을 실행 한 다음 `npm run watch` 를 다시 시작해야 합니다. 그렇지 않으면 사용중인 파일에 대한 오류가 발생합니다.
 
 {{% /notice %}}
 
 ## Add a LambdaRestApi construct to your stack
 
-Going back to `lib/cdk-workshop-stack.ts`, let's define an API endpoint and associate it with our Lambda function:
+`lib/cdk-workshop-stack.ts` 로 돌아가서, API 앤드포인트를 정의하고 이것을 우리의 Lambda 함수에 엮습니다.
 
 {{<highlight ts "hl_lines=3 16-19">}}
 import * as cdk from '@aws-cdk/core';
@@ -47,7 +38,7 @@ export class CdkWorkshopStack extends cdk.Stack {
       code: lambda.Code.fromAsset('lambda'),  // code loaded from "lambda" directory
       handler: 'hello.handler'                // file is "hello", function is "handler"
     });
-
+    
     // defines an API Gateway REST API resource backed by our "hello" function.
     new apigw.LambdaRestApi(this, 'Endpoint', {
       handler: hello
@@ -57,18 +48,17 @@ export class CdkWorkshopStack extends cdk.Stack {
 }
 {{</highlight>}}
 
-That's it. This is all you need to do in order to define an API Gateway which
-proxies all requests to an AWS Lambda function.
+이게 끝이에요! 이것이 AWS Lambda 함수에 대한 모든 요청을 프록시하는 API Gateway 를 정의하기 위해 필요한 모든 작업입니다.
 
 ## cdk diff
 
-Let's see what's going to happen when we deploy this:
+이제 이것을 배포하면 어떤 변화가 있는지 살펴볼까요.
 
 ```
 cdk diff
 ```
 
-Output should look like this:
+결과는 다음과 같습니다.
 
 ```text
 Stack CdkWorkshopStack
@@ -137,11 +127,11 @@ Outputs
 [+] Output Endpoint/Endpoint Endpoint8024A810: {"Value":{"Fn::Join":["",["https://",{"Ref":"EndpointEEF1FD8F"},".execute-api.",{"Ref":"AWS::Region"},".",{"Ref":"AWS::URLSuffix"},"/",{"Ref":"EndpointDeploymentStageprodB78BEEA0"},"/"]]}}
 ```
 
-That's nice. This one line of code added 12 new resources to our stack.
+멋지네요. 이 코드 한 줄은 스택에 12 개의 새로운 리소스를 추가했습니다.
 
 ## cdk deploy
 
-Okay, ready to deploy?
+좋아요, 이제 배포할 준비가 됐죠?
 
 ```
 cdk deploy
@@ -149,52 +139,48 @@ cdk deploy
 
 ## Stack outputs
 
-When deployment is complete, you'll notice this line:
+배포가 완료되면 다음와 같은 내용이 표시됩니다.
 
 ```
 CdkWorkshopStack.Endpoint8024A810 = https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/
 ```
 
-This is a [stack output](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html) that's
-automatically added by the API Gateway construct and includes the URL of the API Gateway endpoint.
+이것은 API Gateway가 자동으로 등록해서 API Gateway 앤드포인트의 URL 에 대한 [스택 출력 (stack output)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html) 입니다.
 
 ## Testing your app
 
-Let's try to hit this endpoint with `curl`. Copy the URL and execute (your
-prefix and region will likely be different).
+이제 `curl` 을 사용해서 위 앤드포인트에 접속해볼까요. URL을 복사해서 실행해봅시다. (위 예의 URL은 여러분들이 생성한 URL과 다릅니다)
 
 {{% notice info %}}
-If you don't have [curl](https://curl.haxx.se/) installed, you can always use
-your favorite web browser to hit this URL.
+만악 [curl](https://curl.haxx.se/)이 설치되어있지 않다면, 웹 브라우저에 URL을 입력해서 사용해주세요.
 {{% /notice %}}
 
 ```
 curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/
 ```
 
-Output should look like this:
+실행 결과는 다음과 같습니다.
 
 ```
 Hello, CDK! You've hit /
 ```
 
-You can also use your web browser for this:
+다음과 같이 웹 브라우저를 사용할 수도 있어요.
 
 ![](./browser.png)
 
-If this is the output you received, your app works!
+실행 결과가 위와 같다면, 여러분의 앱은 잘 동작한 것 입니다.
 
 ## What if it didn't work?
 
-If you received a 5xx error from API Gateway, it is likely one of two issues:
+만약 API Gateway 에서 5xx 에러를 받았다면, 두 가지 문제 중 하나 일 가능성이 높습니다.
 
-1. The response your function returned is not what API Gateway expects. Go back
-   and make sure your handler returns a response that includes a `statusCode`,
-   `body` and `header` fields (see [Write handler runtime
+1. 함수에서 반환 한 응답이 API Gateway가 예상하는 것과 다른 경우 입니다. 코드로 돌아가서 handler에서  `statusCode`,
+   `body` and `header` 에 대한 응답을 반환하는지 확인해 주세요. (참고: [Write handler runtime
    code](./200-lambda.html)).
-2. Your function failed for some reason. To debug this, you can quickly jump to [this section](../40-hit-counter/500-logs.html)
-   to learn how to view your Lambda logs.
+2. 어떤 이유로 인해 함수가 실패할 수 있습니다. [이 페이지](../40-hit-counter/500-logs.html)의 Lambda 로그 확인 법을 참고해서 문제를 디버깅 해주세요.
 
 ---
 
-Good job! In the next chapter, we'll write our own reusable construct.
+수고하셨습니다 ! 다음 장에서는 재사용 가능한 construct를 작성해 보아요.
+

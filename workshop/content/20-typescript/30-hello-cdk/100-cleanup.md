@@ -5,11 +5,9 @@ weight = 100
 
 ## Delete the sample code from your stack
 
-The project created by `cdk init sample-app` includes an SQS queue, and an SNS topic. We're
-not going to use them in our project, so remove them from your the
-`CdkWorkshopStack` constructor.
+`cdk init sample-app`에서 생성 한 프로젝트에는 SQS queue와 SNS topic이 포함됩니다. 우리는 앞으로 이것을 사용하지 않을 것이기 때문에 `CdkWorkshopStack` 생성자 안에서 해당 코드를 지웁니다.
 
-Open `lib/cdk-workshop-stack.ts` and clean it up. Eventually it should look like this:
+ `lib/cdk-workshop-stack.ts`를 열어서 코드를 지웁니다. 그러면 다음과 같이 보일 것 입니다.
 
 ```ts
 import * as cdk from '@aws-cdk/core';
@@ -25,14 +23,13 @@ export class CdkWorkshopStack extends cdk.Stack {
 
 ## cdk diff
 
-Now that we modified our stack's contents, we can ask the toolkit to show us the difference between our CDK app and
-what's currently deployed. This is a safe way to check what will happen once we run `cdk deploy` and is always good practice:
+스택의 내용을 수정했기 때문에 Toolkit에 CDK 앱과 현재 배포된 것 사이의 차이점을 보여달라고 요청할 수 있습니다. 이것은 `cdk deploy`를 실행하면 어떤 일이 일어날 지 확인하는 안전한 방법이며 언제나 좋은 사례라고 할 수 있습니다.
 
 ```
 cdk diff
 ```
 
-Output should look like the following:
+다음과 같은 내용을 확인할 수 있습니다.
 
 ```
 Stack CdkWorkshopStack
@@ -53,14 +50,14 @@ Resources
 [-] AWS::SNS::Subscription CdkWorkshopTopicCdkWorkshopQueueSubscription88D211C7 destroy
 ```
 
-As expected, all of our resources are going to be brutally destroyed.
+예상했듯이 우리의 모든 리소스가 제거될 것 입니다.
 
 ## cdk deploy
 
-Run `cdk deploy` and __proceed to the next section__ (no need to wait):
+`cdk deploy` 를 실행하고 다음 섹션으로 이동합시다. (실행한 뒤에 기다릴 필요 없어요)
 
 ```
 cdk deploy
 ```
 
-You should see the resources being deleted.
+

@@ -5,11 +5,9 @@ weight = 300
 
 ## Add resources to the hit counter construct
 
-Now, let's define the AWS Lambda function and the DynamoDB table in our
-`HitCounter` construct.
+이제 HitCounter constuct에서 AWS Lambda 함수와 DynamoDB 테이블을 정의하겠습니다.
 
-As usual, we first need to install the DynamoDB construct library (we already
-have the Lambda library installed):
+평소와 같이, 먼저 DynamoDB construct 라이브러리를 설치해야합니다 (이미 Lambda 라이브러리가 설치되어 있음).:
 
 ```
 npm install @aws-cdk/aws-dynamodb
@@ -17,14 +15,11 @@ npm install @aws-cdk/aws-dynamodb
 
 {{% notice info %}}
 
-**Windows users**: on Windows, you will have to stop the `npm run watch` command
-that is running in the background, then run `npm install`, then start
-`npm run watch` again. Otherwise you will get an error about files being
-in use.
+**Windows 사용자**: Windows에서는 백그라운드에서 실행중인 `npm run watch` 명령을 중지하고, `npm install`을 실행 한 다음 `npm run watch` 를 다시 시작해야 합니다. 그렇지 않으면 사용중인 파일에 대한 오류가 발생합니다.
 
 {{% /notice %}}
 
-Now, go back to `lib/hitcounter.ts` and add the following highlighted code:
+이제 `lib/hitcounter.ts` 로 돌아가서 다음과 같이 코드를 추가합니다.
 
 {{<highlight ts "hl_lines=3 12-13 18-30">}}
 import * as cdk from '@aws-cdk/core';
@@ -47,7 +42,7 @@ export class HitCounter extends cdk.Construct {
     const table = new dynamodb.Table(this, 'Hits', {
         partitionKey: { name: 'path', type: dynamodb.AttributeType.STRING }
     });
-
+    
     this.handler = new lambda.Function(this, 'HitCounterHandler', {
         runtime: lambda.Runtime.NODEJS_10_X,
         handler: 'hitcounter.handler',
@@ -63,19 +58,11 @@ export class HitCounter extends cdk.Construct {
 
 ## What did we do here?
 
-This code is hopefully quite easy to understand:
+이제 이 코드는 이해하기 쉬울 것입니다
 
- * We defined a DynamoDB table with `path` as the partition key.
- * We defined a Lambda function which is bound to the `lambda/hitcounter.handler` code.
- * We __wired__ the Lambda's environment variables to the `functionName` and `tableName`
-   of our resources.
+ * 파티션 키로 `path`를 사용하여 DynamoDB 테이블을 정의했습니다.
+ * `lambda/hitcounter.handler` 에 바인딩 된 Lambda 함수를 정의했습니다.
+ * Lambda의 환경변수를 우리 리소스의 `functionName` 와 `tableName`에 **연결**했습니다.
 
-## Late-bound values
 
-The `functionName` and `tableName` properties are values that only resolve when
-we deploy our stack (notice that we haven't configured these physical names when
-we defined the table/function, only logical IDs). This means that if you print
-their values during synthesis, you will get a "TOKEN", which is how the CDK
-represents these late-bound values. You should treat tokens as *opaque strings*.
-This means you can concatenate them together for example, but don't be tempted
-to parse them in your code.
+

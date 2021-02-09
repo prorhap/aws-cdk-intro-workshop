@@ -6,34 +6,23 @@ chapter = true
 
 # Congratulations!
 
-You've successfully finished our __Introduction to the CDK__ workshop!
+이제 __Introduction to the CDK__ 워크샵을 모두 마쳤습니다.
 
-In this workshop, you've learned how to:
+이 워크샵에서 여러분들은 다음의 내용을 학습했습니다.
 
-- Create a new CDK project in TypeScript using `cdk init`
-- Add resources to your CDK application stack
-- Use `cdk diff` and `cdk deploy` to deploy your app to an AWS environment
-- Author and use your own custom construct (`HitCounter`)
-- Consume a construct from another npm module (`cdk-dynamo-table-viewer`)
-- Use the AWS Lambda, API Gateway and DynamoDB AWS construct libraries
+- `cdk init` 을 사용해서 TypeScript 를 사용하는 새로운 CDK 프로젝트를 만들었습니다.
+- 여러가지 리소스들을 CDK 애플리케이션 스택에 추가했습니다.
+- `cdk diff` 와 `cdk deploy` 을 사용해서 여러분의 AWS 환경에 앱을 배포했습니다.
+- 커스텀 construct 을 작성하고 사용했습니다. (`HitCounter`)
+- AWS Lambda, API Gateway and DynamoDB AWS construct 라이브러리를 사용했습니다.
 
 ## What's next?
 
-The AWS CDK is a work in progress. It is currently in Developer Preview. We'd
-love to hear what you think about every aspect of the framework.
+이제 앞으로 다음의 것들을 해볼 수 있습니다.
 
-Here are a few things you can do from here:
-
-* __Build something__: build something real with the CDK and let us know how it
-  went. What worked? What was intuitive? What was completely misleading?
-* __Publish construct libraries__: start thinking about infrastructure in terms
-  of small reusable modules instead of monolithic templates. Pick up a useful
-  thing you've built and try to design a beautiful API for it. Share it with the
-  community and let us know about it. We'll be curating a list of constructs,
-  and would love to list yours.
-* Create a simple app in the [Hello World Tutorial](https://docs.aws.amazon.com/CDK/latest/userguide/hello_world_tutorial.html)
-  with the CDK in one of the supported languages: Java, .NET, JavaScript and TypeScript
-* Dive deeper into [CDK
+* __Build something__: CDK로 무언가를 만들어보고 어떻게 적용되었는지 알려주세요. 어떤 점이 좋았습니까?
+* __Publish construct libraries__: 유요한 모델을 만들고 멋진 API를 만들고 이를 커뮤니티에 공유하고 알려주세요.
+* 다음에 대해 좀 더 깊이 알아볼 수 있습니다:  [CDK
   Concepts](https://docs.aws.amazon.com/CDK/latest/userguide/concepts.html):
   [Constructs](https://docs.aws.amazon.com/CDK/latest/userguide/constructs.html),
   [Apps and Stacks](https://docs.aws.amazon.com/CDK/latest/userguide/apps_and_stacks.html),
@@ -41,32 +30,16 @@ Here are a few things you can do from here:
   [Environments](https://docs.aws.amazon.com/cdk/latest/guide/apps_and_stacks.html#environments),
   [Contexts](https://docs.aws.amazon.com/cdk/latest/guide/context.html),
   and [Assets](https://docs.aws.amazon.com/CDK/latest/userguide/assets.html)
-* Explore the [AWS Construct
-  Library](https://docs.aws.amazon.com/CDK/latest/userguide/aws_construct_lib.html) and the
-  [reference documentation](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-construct-library.html)
-  which already contains constructs for many AWS resources such as
-  [EC2](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-ec2-readme.html),
-  [AutoScaling](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-autoscaling-readme.html),
-  [S3](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-s3-readme.html),
-  [SNS](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-sns-readme.html),
-  [SQS](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-sqs-readme.html),
-  [CodePipeline](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-codepipeline-readme.html),
-  [Step Functions](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-stepfunctions-readme.html)
-  and many more...
-* Read guidelines on how to [write your own
-  constructs](https://docs.aws.amazon.com/CDK/latest/userguide/writing_constructs.html)
-* Learn about [__jsii__](https://github.com/awslabs/jsii), the technology
-  behind the CDK's multi-language support
-* Browse some [examples](https://github.com/aws-samples/aws-cdk-examples) on our GitHub repository
+* [AWS Construct Library](https://docs.aws.amazon.com/CDK/latest/userguide/aws_construct_lib.html) 와 [reference documentation](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-construct-library.html) 를 살펴볼 수 있어요.
+* [write your own constructs](https://docs.aws.amazon.com/CDK/latest/userguide/writing_constructs.html) 가이드라인을 살펴봅니다
+* CDK 에서 다양한 언어를 지원하기 위한 기술인 [__jsii__](https://github.com/awslabs/jsii) 를 살펴봅니다.
+* GitHub repository 에서 [examples](https://github.com/aws-samples/aws-cdk-examples) 를 살펴봅니다.
 
 -----
 
-* Join the conversation on our [Gitter channel](https://gitter.im/awslabs/aws-cdk)
-* Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/aws-cdk)
-* Raise [an issue](https://github.com/awslabs/aws-cdk/issues/new) on GitHub
-* Learn how to submit
-  [contributions](https://github.com/awslabs/aws-cdk/blob/master/CONTRIBUTING.md)
-  to the project.
+* [Gitter channel](https://gitter.im/awslabs/aws-cdk) 채널에 참여해주세요
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/aws-cdk) 에 질문을 남겨주세요.
+* GitHub 에 [이슈](https://github.com/awslabs/aws-cdk/issues/new)를 남겨주세요
 
 -----
 

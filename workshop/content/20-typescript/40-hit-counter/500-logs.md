@@ -5,30 +5,25 @@ weight = 500
 
 ## Viewing CloudWatch logs for our Lambda function
 
-The first thing to do is to go and look at the logs of our hit counter AWS
-Lambda function.
+가장 먼저 할 일은 hit counter AWS Lambda 함수의 로그를 살펴 보는 것입니다.
 
-There are many tools that help you do that like [SAM
-CLI](https://github.com/awslabs/aws-sam-cli) and
-[awslogs](https://github.com/jorgebastida/awslogs). In this workshop, we'll show
-you how to find your logs through the AWS console.
+이를 위해서는 [SAM CLI](https://github.com/awslabs/aws-sam-cli) and [awslogs](https://github.com/jorgebastida/awslogs) 와 같은 여러 도구가 있습니다. 이 워크샵에서는 AWS 콘솔을 통해 로그를 찾는 방법을 사용할 것 입니다.
 
-1. Open the [AWS Lambda console](https://console.aws.amazon.com/lambda/home) (make sure you
-   are connected to the correct region).
-
-2. Click on the __HitCounter__ Lambda function
-   (the name should contain the string `CdkWorkshopStack-HelloHitCounter`):
+1. [AWS Lambda 콘솔](https://console.aws.amazon.com/lambda/home)을 엽니다. (리전이 올바르게 설정되었는지 확인)
+   
+2. __HitCounter__ Lambda 함수를 클릭합니다.
+   (함수 이름에는 `CdkWorkshopStack-HelloHitCounter` 이 포함되어 있습니다):
     ![](./logs1.png)
 
-3. Click on __Monitoring__
+3. __Monitoring__ 을 클릭합니다.
     ![](./logs2.png)
 
-4. Click on __View Logs in CloudWatch__. This will open the AWS CloudWatch console.
+4. __View Logs in CloudWatch__ 를 클릭해서 AWS CloudWatch 콘솔을 엽니다.
     ![](./logs3.png)
 
-5. Select the most-recent log group.
+5. 가장 최근의 로그 그룹을 선택합니다.
 
-6. Look for the most-recent message containing the string "errorMessage". You'll likely see something like this:
+6. "errorMessage" 문자열을 포함하는 가장 최근 로그를 찾아보면, 다음과 같은 메시지를 볼 수 있습니다.
 
 
    ```json
@@ -52,7 +47,5 @@ you how to find your logs through the AWS console.
 
 ---
 
-It seems like our Lambda function can't write to our DynamoDB table. This
-actually makes sense - we didn't grant it those permissions! Let's go do that
-now.
+Lambda 함수가 DynamoDB 테이블에 쓸 수 없는 것 같네요. 우리는 DyanmoDB에 쓸 수 있는 권한을 부여하지 않았습니다. 이제 권한을 추가해 볼까요.
 

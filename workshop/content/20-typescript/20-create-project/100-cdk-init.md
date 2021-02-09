@@ -5,7 +5,7 @@ weight = 100
 
 ## Create project directory
 
-Create an empty directory on your system:
+여러분의 시스템에 빈 디렉터리를 생성합니다.
 
 ```
 mkdir cdk-workshop && cd cdk-workshop
@@ -13,15 +13,13 @@ mkdir cdk-workshop && cd cdk-workshop
 
 ## cdk init
 
-We will use `cdk init` to create a new TypeScript CDK project:
+`cdk init` 명령을 사용해서 새로운 TypeScript CDK 프로젝트를 생성합니다.
 
 ```
 cdk init sample-app --language typescript
 ```
 
-Output should look like this (you can safely ignore warnings about
-initialization of a git repository, this probably means you don't have git
-installed, which is fine for this workshop):
+화면에서 다음과 같은 내용을 확인할 수 있습니다.
 
 ```
 Applying project template app for typescript
@@ -48,7 +46,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
  * `cdk synth`       emits the synthesized CloudFormation template
 ```
 
-As you can see, it shows us a bunch of useful commands to get us started.
+화면에서 볼 수 있듯이, 시작하는 데 유용한 여러 명령을 확인할 수 있습니다.
 
 ## See Also
 

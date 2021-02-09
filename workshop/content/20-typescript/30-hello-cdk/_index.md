@@ -6,13 +6,10 @@ weight = 30
 
 # Hello, CDK!
 
-In this chapter, we will finally write some CDK code. Instead of the SNS/SQS
-code that we have in our app now, we'll add a Lambda function with an API
-Gateway endpoint in front of it.
+이번 장에서는 CDK 코드를 작성합니다. 현재 우리 앱에 있는 SNS/SQS 코드 대신에 Lambda 함수를 추가하고 그 앞에 API Gateway를 놓을 것 입니다.
 
-Users will be able to hit any URL in the endpoint and they'll receive a
-heartwarming greeting from our function.
+사용자는 엔드포인트에 있는 URL을 클릭할 수 있고, 그러면 우리가 정의한 함수로부터 따뜻한 인사말을 받게됩니다.
 
 ![](/images/hello-arch.png)
 
-First, let's clean up the sample code.
+첫번째로, 샘플 코드를 지워볼까요.

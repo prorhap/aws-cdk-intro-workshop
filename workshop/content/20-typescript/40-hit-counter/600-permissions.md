@@ -5,9 +5,9 @@ weight = 600
 
 ## Allow Lambda to read/write our DynamoDB table
 
-Let's give our Lambda's execution role permissions to read/write from our table.
+Lambda의 Role 에 테이블을 읽기고 쓰기기 위한 권한을 부여하겠습니다. 
 
-Go back to `hitcounter.ts` and add the following highlighted lines:
+`hitcounter.ts` 에서 다음과 같이 강조된 코드를 추가해주세요.
 
 {{<highlight ts "hl_lines=32-33">}}
 import * as cdk from '@aws-cdk/core';
@@ -30,7 +30,7 @@ export class HitCounter extends cdk.Construct {
     const table = new dynamodb.Table(this, 'Hits', {
         partitionKey: { name: 'path', type: dynamodb.AttributeType.STRING }
     });
-
+    
     this.handler = new lambda.Function(this, 'HitCounterHandler', {
       runtime: lambda.Runtime.NODEJS_10_X,
       handler: 'hitcounter.handler',
@@ -40,7 +40,7 @@ export class HitCounter extends cdk.Construct {
         HITS_TABLE_NAME: table.tableName
       }
     });
-
+    
     // grant the lambda role read/write permissions to our table
     table.grantReadWriteData(this.handler);
   }
@@ -49,7 +49,7 @@ export class HitCounter extends cdk.Construct {
 
 ## Deploy
 
-Save & deploy:
+저장하고 배포합니다.
 
 ```
 cdk deploy
@@ -57,14 +57,13 @@ cdk deploy
 
 ## Test again
 
-Okay, deployment is complete. Let's run our test again (either use `curl` or
-your web browser):
+배포가 끝났네요. 다시 테스트 해볼까요. (`curl` 또는 웹 브라우저를 사용합니다):
 
 ```
 curl -i https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/
 ```
 
-Again?
+또 에러인가요?
 
 ```
 HTTP/2 502 Bad Gateway
@@ -75,8 +74,7 @@ HTTP/2 502 Bad Gateway
 
 # 😢
 
-Still getting this pesky 5xx error! Let's look at our CloudWatch logs again
-(click "Refresh"):
+5xx error 에러가 발생하네요. CloudWatch logs 로그를 다시 볼까요?
 
 ```json
 {
@@ -97,22 +95,21 @@ Still getting this pesky 5xx error! Let's look at our CloudWatch logs again
 }
 ```
 
-Another access denied, but this time, if you take a close look:
+또 다른 Access Denied 메시지네요. 자세히 보면 ..
 
 ```
 User: <VERY-LONG-STRING> is not authorized to perform: lambda:InvokeFunction on resource: <VERY-LONG-STRING>"
 ```
 
-So it seems like our hit counter actually managed to write to the database. We can confirm by
-going to the [DynamoDB Console](https://console.aws.amazon.com/dynamodb/home):
+이번에는 우리의 hit counter가 데이터베이스에 쓰기를 할 수 있었던 것 같습니다. 이것은 [DynamoDB Console](https://console.aws.amazon.com/dynamodb/home) 에서 확인할 수 있습니다.
 
 ![](./logs5.png)
 
-But, we must also give our hit counter permissions to invoke the downstream lambda function.
+그러나 다운스트림 Lambda 함수를 호출 할 수 있는 hit counter 권한도 부여해야 합니다.
 
 ## Grant invoke permissions
 
-Add the highlighted lines to `lib/hitcounter.ts`:
+아래의 강조된 코드를 `lib/hitcounter.ts` 에 추가합니다.
 
 {{<highlight ts "hl_lines=35-36">}}
 import * as cdk from '@aws-cdk/core';
@@ -135,7 +132,7 @@ export class HitCounter extends cdk.Construct {
     const table = new dynamodb.Table(this, 'Hits', {
         partitionKey: { name: 'path', type: dynamodb.AttributeType.STRING }
     });
-
+    
     this.handler = new lambda.Function(this, 'HitCounterHandler', {
       runtime: lambda.Runtime.NODEJS_10_X,
       handler: 'hitcounter.handler',
@@ -145,10 +142,10 @@ export class HitCounter extends cdk.Construct {
         HITS_TABLE_NAME: table.tableName
       }
     });
-
+    
     // grant the lambda role read/write permissions to our table
     table.grantReadWriteData(this.handler);
-
+    
     // grant the lambda role invoke permissions to the downstream function
     props.downstream.grantInvoke(this.handler);
   }
@@ -157,14 +154,13 @@ export class HitCounter extends cdk.Construct {
 
 ## Diff
 
-You can check what this did using `cdk diff`:
+`cdk diff` 명령을 사용해서 이것이 무엇을 하는지 확인할 수 있습니다.
 
 ```
 cdk diff
 ```
 
-The **Resource** section should look something like this,
-which shows the IAM statement was added to the role:
+**Resource** 부분에서 IAM 구문이 Role에 추가된 것을 확인할 수 있습니다.
 
 ```
 Resources
@@ -189,23 +185,23 @@ Resources
             [ ] ]
 ```
 
-Which is exactly what we wanted.
+우리가 정확히 원했던 것이죠.
 
 ## Deploy
 
-Okay... let's give this another shot:
+다시 한번 해볼까요.
 
 ```
 cdk deploy
 ```
 
-Then hit your endpoint with `curl` or with your web browser:
+그리고 `curl` 또는 웹 브라우저로 엔드포인트에 접속합니다.
 
 ```
 curl -i https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/
 ```
 
-Output should look like this:
+다음과 같은 결과를 확인할 수 있습니다.
 
 ```
 HTTP/2 200 OK
@@ -214,7 +210,6 @@ HTTP/2 200 OK
 Hello, CDK! You've hit /
 ```
 
-> If you still get 5xx, give it a few seconds and try again. Sometimes API
-Gateway takes a little bit to "flip" the endpoint to use the new deployment.
+> 여전히 5xx 에러가 발생한다면, 잠깐 후에 다시한번 해보세요. API Gateway는 종종 새로운 배포본을 사용하기 위한 엔드포인트 전환에 약간 시간이 소요되기도 합니다.
 
 # 😲
