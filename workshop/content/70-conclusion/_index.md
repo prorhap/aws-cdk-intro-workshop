@@ -1,5 +1,5 @@
 +++
-title = "Congrats!"
+title = "마무리하기"
 weight = 70
 chapter = true
 +++

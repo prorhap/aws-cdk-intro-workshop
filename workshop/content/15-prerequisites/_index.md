@@ -1,12 +1,12 @@
 +++
-title = "Prerequisites"
+title = "사전 준비"
 chapter = true
 weight = 15
 +++
 
 # Prerequisites for the Workshop
 
-이 워크샵을 수행하려면 다음의 것들을 분비해야 합니다.
+이 워크샵을 수행하려면 다음의 것들을 준비해야 합니다.
 
 {{% children showhidden="false" %}}
 
