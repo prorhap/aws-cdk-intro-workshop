@@ -95,13 +95,13 @@ HTTP/2 502 Bad Gateway
 }
 ```
 
-또 다른 Access Denied 메시지네요. 자세히 보면 ..
+또 다른 Access Denied 메시지네요. 자세히 보면 ...
 
 ```
 User: <VERY-LONG-STRING> is not authorized to perform: lambda:InvokeFunction on resource: <VERY-LONG-STRING>"
 ```
 
-이번에는 우리의 hit counter가 데이터베이스에 쓰기를 할 수 있었던 것 같습니다. 이것은 [DynamoDB Console](https://console.aws.amazon.com/dynamodb/home) 에서 확인할 수 있습니다.
+이번에는 우리의 hit counter가 데이터베이스에 쓰기를 할 수 있었던 것 같습니다. 이것은 [DynamoDB 콘솔](https://console.aws.amazon.com/dynamodb/home) 에서 확인할 수 있습니다.
 
 ![](./logs5.png)
 
@@ -154,7 +154,7 @@ export class HitCounter extends cdk.Construct {
 
 ## Diff
 
-`cdk diff` 명령을 사용해서 이것이 무엇을 하는지 확인할 수 있습니다.
+`cdk diff` 명령을 사용해서 새롭게 추가한 코드가 무엇을 하는지 확인할 수 있습니다.
 
 ```
 cdk diff

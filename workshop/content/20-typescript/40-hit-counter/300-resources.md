@@ -7,7 +7,7 @@ weight = 300
 
 이제 HitCounter constuct에서 AWS Lambda 함수와 DynamoDB 테이블을 정의하겠습니다.
 
-평소와 같이, 먼저 DynamoDB construct 라이브러리를 설치해야합니다 (이미 Lambda 라이브러리가 설치되어 있음).:
+평소와 같이, 먼저 DynamoDB construct 라이브러리를 설치해야 합니다 (Lambda 라이브러리는 이미 설치되어 있음).:
 
 ```
 npm install @aws-cdk/aws-dynamodb
@@ -60,7 +60,7 @@ export class HitCounter extends cdk.Construct {
 
 이제 이 코드는 이해하기 쉬울 것입니다
 
- * 파티션 키로 `path`를 사용하여 DynamoDB 테이블을 정의했습니다.
+ * 파티션 키로 `path` 를 사용하여 DynamoDB 테이블을 정의했습니다.
  * `lambda/hitcounter.handler` 에 바인딩 된 Lambda 함수를 정의했습니다.
  * Lambda의 환경변수를 우리 리소스의 `functionName` 와 `tableName`에 **연결**했습니다.
 

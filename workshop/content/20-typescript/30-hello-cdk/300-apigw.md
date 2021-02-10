@@ -3,9 +3,9 @@ title = "API Gateway"
 weight = 300
 +++
 
-다음 단계는 우리의 함수 앞에 API Gateway를 추가하는 것 입니다. API Gateway는 [curl](https://curl.haxx.se/) 또는 웹 브라우저와 같은 HTTP 클라이언트를 사용해서 인터넷에 있는 사용자에게 HTTP 앤드포인트를 노출합니다.
+다음 단계는 우리의 Lambda 함수 앞에 API Gateway를 추가하는 것 입니다. API Gateway는 인터넷에 있는 사용자에게 HTTP 엔드포인트를 노출하고, [curl](https://curl.haxx.se/) 또는 웹 브라우저와 같은 HTTP 클라이언트를 사용해서 접속할 수 있게 합니다.
 
-우리는 API의 루트에 마운트 된 [Lambda 프록시 통합](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html) 을 사용합니다. 즉, URL 경로에 대한 모든 요청은 Lambda 함수로 직접 프록시되고 함수의 응답이 사용자에게 다시 반환됩니다.
+우리는, API의 루트에 마운트 된 [Lambda 프록시 통합](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html) 을 사용합니다. 즉, URL 경로에 대한 모든 요청은 Lambda 함수로 직접 프록시되고 함수의 응답이 사용자에게 다시 반환됩니다.
 
 ## Install the API Gateway construct library
 
@@ -21,7 +21,7 @@ npm install @aws-cdk/aws-apigateway
 
 ## Add a LambdaRestApi construct to your stack
 
-`lib/cdk-workshop-stack.ts` 로 돌아가서, API 앤드포인트를 정의하고 이것을 우리의 Lambda 함수에 엮습니다.
+`lib/cdk-workshop-stack.ts` 로 돌아가서, API 엔드포인트를 정의하고 이것을 우리의 Lambda 함수에 엮습니다.
 
 {{<highlight ts "hl_lines=3 16-19">}}
 import * as cdk from '@aws-cdk/core';
@@ -127,7 +127,7 @@ Outputs
 [+] Output Endpoint/Endpoint Endpoint8024A810: {"Value":{"Fn::Join":["",["https://",{"Ref":"EndpointEEF1FD8F"},".execute-api.",{"Ref":"AWS::Region"},".",{"Ref":"AWS::URLSuffix"},"/",{"Ref":"EndpointDeploymentStageprodB78BEEA0"},"/"]]}}
 ```
 
-멋지네요. 이 코드 한 줄은 스택에 12 개의 새로운 리소스를 추가했습니다.
+멋지네요. 이 코드 한 줄은 12 개의 새로운 리소스를 스택에 추가했습니다.
 
 ## cdk deploy
 
@@ -145,14 +145,14 @@ cdk deploy
 CdkWorkshopStack.Endpoint8024A810 = https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/
 ```
 
-이것은 API Gateway가 자동으로 등록해서 API Gateway 앤드포인트의 URL 에 대한 [스택 출력 (stack output)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html) 입니다.
+이것은 API Gateway 엔드포인트의 URL 에 대한 [스택 출력 (stack output)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html) 입니다.
 
 ## Testing your app
 
-이제 `curl` 을 사용해서 위 앤드포인트에 접속해볼까요. URL을 복사해서 실행해봅시다. (위 예의 URL은 여러분들이 생성한 URL과 다릅니다)
+이제 `curl` 을 사용해서 위 엔드포인트에 접속해볼까요. URL을 복사해서 실행해봅시다. (위 예의 URL은 여러분들이 생성한 URL과 다릅니다)
 
 {{% notice info %}}
-만악 [curl](https://curl.haxx.se/)이 설치되어있지 않다면, 웹 브라우저에 URL을 입력해서 사용해주세요.
+만악 [curl](https://curl.haxx.se/)이 설치되어있지 않다면, 웹 브라우저에 URL을 입력해주세요.
 {{% /notice %}}
 
 ```
@@ -175,12 +175,12 @@ Hello, CDK! You've hit /
 
 만약 API Gateway 에서 5xx 에러를 받았다면, 두 가지 문제 중 하나 일 가능성이 높습니다.
 
-1. 함수에서 반환 한 응답이 API Gateway가 예상하는 것과 다른 경우 입니다. 코드로 돌아가서 handler에서  `statusCode`,
-   `body` and `header` 에 대한 응답을 반환하는지 확인해 주세요. (참고: [Write handler runtime
+1. 함수에서 반환한 응답이 API Gateway가 예상하는 것과 다른 경우 입니다. 코드로 돌아가서 handler에서 `statusCode`,
+   `body` and `header` 에 대한 값을 반환하는지 확인해 주세요. (참고: [Write handler runtime
    code](./200-lambda.html)).
 2. 어떤 이유로 인해 함수가 실패할 수 있습니다. [이 페이지](../40-hit-counter/500-logs.html)의 Lambda 로그 확인 법을 참고해서 문제를 디버깅 해주세요.
 
 ---
 
-수고하셨습니다 ! 다음 장에서는 재사용 가능한 construct를 작성해 보아요.
+수고하셨습니다! 이제 다음 장에서 재사용 가능한 construct를 작성해 봅시다.
 

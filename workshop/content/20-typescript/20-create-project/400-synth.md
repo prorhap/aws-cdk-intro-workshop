@@ -5,12 +5,9 @@ weight = 400
 
 ## Synthesize a template from your app
 
-AWS CDK 앱은 코드를 사용하는 인프라의 **정의** 일뿐 입니다. CDK 앱을 실행하면, 여러분의 애플리케이션에 정의된 각 스택에 대한 AWS CloudFormation 템플릿을 생성합니다. (CDK 용어를 사용하면 **synthesize** 한다고 합니다.)
+AWS CDK 앱은 코드를 사용해서 작성하는 인프라의 **정의** 일 뿐입니다. CDK 앱을 실행하면, 여러분의 애플리케이션에 정의된 각 스택에 대한 AWS CloudFormation 템플릿을 생성합니다. (CDK 용어를 사용해서 말하면, **synthesize** 한다고 합니다.)
 
-CDK 앱을 synthesize 하기 위해서는 `cdk synth` 명령을 사용합니다. 샘플 앱의 
-
-To synthesize a CDK app, use the `cdk synth` command. Let's check out the
-template synthesized from the sample app:
+CDK 앱을 synthesize 하기 위해서는 `cdk synth` 명령을 사용합니다. 샘플 앱을 synthesize 해볼까요.
 
 {{% notice info %}} CDK CLI는 cdk.json 파일과 같은 디렉터리에서 실행해야 합니다. 만약 터미널에서 디렉터리를 변경한다면 다시 원래 위치로 돌아와서 명령을 실행해주세요.{{% /notice %}}
 
@@ -142,7 +139,7 @@ Conditions:
 
 - **AWS::SQS::Queue** - 우리가 사용할 Queue
 - **AWS::SNS::Topic** - SNS Topic
-- **AWS::SNS::Subscription** - Queue와 Topci 사이의 구독
+- **AWS::SNS::Subscription** - Queue와 Topic 사이의 구독 설정
 - **AWS::SQS::QueuePolicy** - 위 Topic이 Queue에 메시지를 보낼수 있게 하기 위한 IAM 정책
 
 {{% notice info %}}Toolkit 은 자동으로  **AWS::CDK::Metadata** 를 각 스택으로 추가합니다. 이것은 AWS CDK 팀에서 분석 및 보안 문제가있는 버전을 식별하는데 사용됩니다. 자세한 내용은 AWS CDK User Guide의 [Version Reporting](https://docs.aws.amazon.com/cdk/latest/guide/tools.html) 를 참고해주세요. 우리는 나머지 이 워크샵을 진행하면서 diff 화면에서는 메타데이터 리소스를 제외할 것 입니다.{{% /notice %}}

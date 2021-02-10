@@ -4,7 +4,7 @@ weight = 500
 
 +++
 
-우리는 CloudFormation 템플릿까지 잘 만들었습니다. 다음으로는 무엇을 할까요? **이제 우리 계정으로 배포를 해봅시다.**
+우리는 CloudFormation 템플릿까지 잘 만들었습니다. 다음으로는 무엇을 해볼까요? **이제 여러분들의 계정에 배포를 해봅시다.**
 
 ## Bootstrapping an environment
 
@@ -73,17 +73,17 @@ arn:aws:cloudformation:REGION:ACCOUNT-ID:stack/CdkWorkshopStack/STACK-ID
 
 CDK 앱은 AWS CloudFormation을 통해 배포되었습니다. 각 CDK 스택은 CloudFormation 스택과 1:1 매핑됩니다.
 
-이 것은 여러분들이 AWS CloudFormation 콘솔을 사용해서 여러분들의 스택을 관리할 수 있다는 말이겠죠.
+이것은 여러분들이 AWS CloudFormation 콘솔을 사용해서 여러분들의 스택을 관리할 수 있다는 말이겠죠.
 
 [AWS CloudFormation 콘솔](https://console.aws.amazon.com/cloudformation/home) 을 살펴봅시다.
 
-여러분들은 아마 다음과 같은 것을 확인할 수 있을 것 입니다. (만약 보이지 않는다면 리전을 올바르게 선택했는 지 확인해주세요)
+여러분들은 아마 다음과 같은 것을 확인할 수 있을 것 입니다. (만약 보이지 않는다면 리전을 올바르게 선택했는지 확인해 주세요)
 
 ![](./cfn1.png)
 
-`CdkWorkshopStack` 를 선택했다면 **Resoures** 탭을 오픈합니다. 그러면 우리 리소스들에 대한 물리적인 ID를 확인할 수 있을 것 입니다.
+`CdkWorkshopStack` 를 선택했다면 **Resoures** 탭을 오픈합니다. 그러면 우리 리소스에 대한 물리적인 ID를 확인할 수 있습니다.
 
 ![](./cfn2.png)
 
-# 이제 코딩할 준비가 완료되었습니다!
+# 이제 코딩할 준비가 완료되었어요!
 

@@ -7,9 +7,9 @@ weight = 500
 
 가장 먼저 할 일은 hit counter AWS Lambda 함수의 로그를 살펴 보는 것입니다.
 
-이를 위해서는 [SAM CLI](https://github.com/awslabs/aws-sam-cli) and [awslogs](https://github.com/jorgebastida/awslogs) 와 같은 여러 도구가 있습니다. 이 워크샵에서는 AWS 콘솔을 통해 로그를 찾는 방법을 사용할 것 입니다.
+로그를 확인하기 위해서는 [SAM CLI](https://github.com/awslabs/aws-sam-cli) and [awslogs](https://github.com/jorgebastida/awslogs) 와 같은 여러 도구를 이용할 수 있습니다. 이 워크샵에서는 AWS 콘솔을 사용해서 로그를 확인하는 방법을 사용할 것 입니다.
 
-1. [AWS Lambda 콘솔](https://console.aws.amazon.com/lambda/home)을 엽니다. (리전이 올바르게 설정되었는지 확인)
+1. [AWS Lambda 콘솔](https://console.aws.amazon.com/lambda/home)을 엽니다. (Region이 올바르게 설정되었는지 확인)
    
 2. __HitCounter__ Lambda 함수를 클릭합니다.
    (함수 이름에는 `CdkWorkshopStack-HelloHitCounter` 이 포함되어 있습니다):
@@ -47,5 +47,5 @@ weight = 500
 
 ---
 
-Lambda 함수가 DynamoDB 테이블에 쓸 수 없는 것 같네요. 우리는 DyanmoDB에 쓸 수 있는 권한을 부여하지 않았습니다. 이제 권한을 추가해 볼까요.
+Lambda 함수가 DynamoDB 테이블을 쓸 수 없는 것 같네요. 우리는 DyanmoDB에 쓸 수 있는 권한을 부여하지 않았습니다. 이제 권한을 추가해 볼까요.
 

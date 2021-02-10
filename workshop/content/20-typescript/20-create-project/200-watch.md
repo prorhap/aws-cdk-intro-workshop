@@ -15,19 +15,19 @@ TypeScript 코드는 JavaScript로 컴파일해야 하기 때문에, 소스 파�
 
 ## 변경된 파일 watching
 
-프로젝트 디렉터리에서:
+프로젝트 디렉터리에서
 
 ```
 cd cdk-workshop
 ```
 
-그리고:
+으로 이동하고
 
 ```
 npm run watch
 ```
 
-그러면, 다음을 확인할 수 있습니다.
+를 실행하면, 다음을 확인할 수 있습니다.
 
 ```
 Starting compilation in watch mode...
@@ -35,7 +35,7 @@ Found 0 errors. Watching for file changes.
 ...
 ```
 
-이것은 TypeScript 컴파일러(`tsc`)를 "watch" 모드로 시작합니다. 그리고 이것은 프로젝트 디렉터리를 모니터링 하면서  `.ts` 파일이 변경될 때 마다 `.js` 로 자동으로 컴파일 합니다.
+이것은 TypeScript 컴파일러(`tsc`)를 "watch" 모드로 시작합니다. 이제 프로젝트 디렉터리를 모니터링 하면서  `.ts` 파일이 변경될 때 마다 자동으로  `.js` 로 컴파일 합니다.
 
 ----
 

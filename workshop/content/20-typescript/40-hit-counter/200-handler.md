@@ -47,5 +47,5 @@ exports.handler = async function(event) {
  * `HITS_TABLE_NAME` 는 저장할 때 사용할 DynamoDB 테이블의 이름 입니다.
  * `DOWNSTREAM_FUNCTION_NAME` 는 호출하게 될 Lambda 함수 이름 입니다.
 
-테이블의 실제 이름과 다운스트림 함수는 앱을 배포 할 때 결정되므로, construct 코드에서 이 값을 연결해야합니다. 다음 섹션에서 이 작업을 할 것 입니다.
+테이블의 실제 이름과 다운스트림 함수는 앱을 배포 할 때 결정되므로, construct 코드에서 이 값을 연결해야합니다. 다음 장에서 이 작업을 할 것 입니다.
 
