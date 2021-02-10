@@ -6,7 +6,7 @@ chapter = true
 
 # Congratulations!
 
-이제 __Introduction to the CDK__ 워크샵을 모두 마쳤습니다.
+이제 __CDK__ 워크샵을 모두 마쳤습니다.
 
 이 워크샵에서 여러분들은 다음의 내용을 학습했습니다.
 
