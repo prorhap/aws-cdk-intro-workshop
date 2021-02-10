@@ -15,13 +15,13 @@ TypeScript 코드는 JavaScript로 컴파일해야 하기 때문에, 소스 파�
 
 ## 변경된 파일 watching
 
-프로젝트 디렉터리에서
+프로젝트 디렉터리
 
 ```
 cd cdk-workshop
 ```
 
-으로 이동하고
+로 이동해서
 
 ```
 npm run watch

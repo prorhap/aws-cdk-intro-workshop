@@ -5,7 +5,7 @@ weight = 100
 
 ## Delete the sample code from your stack
 
-`cdk init sample-app`에서 생성 한 프로젝트에는 SQS queue와 SNS topic이 포함됩니다. 우리는 앞으로 이것을 사용하지 않기 때문에 `CdkWorkshopStack` 생성자에서 해당 코드를 지웁니다.
+앞에서 생성 한 프로젝트에는 SQS queue와 SNS topic이 포함됩니다. 우리는 앞으로 이것을 사용하지 않기 때문에 `CdkWorkshopStack` 생성자에서 해당 코드를 지웁니다.
 
  `lib/cdk-workshop-stack.ts`를 열어서 코드를 지웁니다. 그러면 다음과 같이 보일 것 입니다.
 
