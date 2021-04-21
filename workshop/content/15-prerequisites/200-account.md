@@ -19,8 +19,11 @@ weight = 200
 
 1. [https://dashboard.eventengine.run/](https://dashboard.eventengine.run/)로 이동하여 포탈에 접속한 뒤 제공받은 해시 값을 입력합니다. 
 2. 오른쪽 아래에 있는 버튼이 **Accept Terms & Login** 으로 변경되면 이를 클릭합니다.
-3. 'Team Dashboard' 페이지의 **AWS Console** 버튼을 클릭합니다. 대화상자가 열릴 것 입니다.
-4. 운영체제를 선택하고 자격증명을 복사합니다. 다음처럼 보일 것 입니다.
+3. 로그인 방식으로 **Email One-Time Password (OTP)** 을 선택합니다.
+4. passcode를 받을 email 주소를 입력 후 **Send passcode** 버튼을 클릭합니다.
+5. 받은 passcode 를 입력 후 **Sign in** 버튼을 클릭합니다.
+6. Team Dashboard 화면에서 **AWS Console** 버튼을 클릭합니다. 그러면 대화상자가 열릴 것 입니다.
+7. **Credentials / CLI Snippets** 에서 운영체제를 선택하고 자격증명을 복사합니다. 다음처럼 보일 것 입니다.
 
 ```bash
 export AWS_DEFAULT_REGION=ap-northeast-2
@@ -30,13 +33,15 @@ export AWS_SESSION_TOKEN=AowGZXIvYXdzEPf//////////wEaDFkE0EPYXOPgmFxU
 ```
 
 {{% notice tip %}}
-예를 위한 자격증명이 아닌, 대시보드의 자격증명을 복사하여야합니다 ;)
+위 예시에 있는 자격증명이 아닌, 여러분 화면에 있는 자격증명을 복사하여야합니다 ;)
 {{% /notice %}}
 
-5. 이 자격증명을 텍스트 파일로 저장하거나 에디터에 복사합니다.
+5. 이 자격증명을 텍스트 파일로 저장하거나 에디터에 복사합니다 - 이 자격증명은 여러분이 터미널을 사용할 때 적용합니다.
 6. 자격증명을 기록했다면 **Open AWS Console**을 클릭하여, AWS Console을 엽니다.
 
 이제 [다음 단계](./300-nodejs.html)로 넘어가주세요.
+
+
 
 
 
